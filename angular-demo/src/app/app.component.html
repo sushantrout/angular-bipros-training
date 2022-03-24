@@ -1,0 +1,70 @@
+<button (click)="addEmployee()">Add +</button>
+<button (click)="saveEmployee()">Save</button>
+<button (click)="saveParam()">Save P</button>
+<div style="width: 47%">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" [(ngModel)]="employee.name" /></td>
+    </tr>
+
+    <tr>
+      <td>Age:</td>
+      <td><input type="number" [(ngModel)]="employee.age" /></td>
+    </tr>
+
+    <tr>
+      <td>Salary:</td>
+      <td><input type="number" [(ngModel)]="employee.salary" /></td>
+    </tr>
+
+    <tr>
+      <td>Department:</td>
+      <td><input type="text" [(ngModel)]="employee.dept" /></td>
+    </tr>
+  </table>
+</div>
+<!-- <div style="width: 47%">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td>{{employee.name}}</td>
+    </tr>
+
+    <tr>
+      <td>Age:</td>
+      <td>{{employee.age}}</td>
+    </tr>
+
+    <tr>
+      <td>Salary:</td>
+      <td>{{employee.salary}}</td>
+    </tr>
+
+    <tr>
+      <td>Department:</td>
+      <td>{{employee.dept}}</td>
+    </tr>
+  </table>
+</div> -->
+<div>
+  <table style="border: 1px solid red;">
+    <tr style="border: 1px solid red;">
+      <th style="border: 1px solid red;width: 10%;">Name</th>
+      <th style="border: 1px solid red;width: 10%;">Age</th>
+      <th style="border: 1px solid red;width: 10%;">Salary</th>
+      <th style="border: 1px solid red;width: 10%;">Department</th>
+      <th style="border: 1px solid red;width: 10%;">Action</th>
+    </tr>
+    <tr *ngFor="let data of employess">
+      <td style="border: 1px solid red;" *ngIf="data.name == 'sushant'">{{data.name}}</td>
+      <td style="border: 1px solid red; color: red;" *ngIf="data.name != 'sushant'">{{data.name}}</td>
+      <td style="border: 1px solid red;">{{data.age}}</td>
+      <td style="border: 1px solid red;">{{data.salary}}</td>
+      <td style="border: 1px solid red;">{{data.dept}}</td>
+      <td style="border: 1px solid red;cursor: pointer;color: blue;" (click)="selectData(data)"><u>Edit</u></td>
+    </tr>
+  </table>
+</div>
+
+<router-outlet></router-outlet>
