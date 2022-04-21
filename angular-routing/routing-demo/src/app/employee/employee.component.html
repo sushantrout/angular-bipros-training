@@ -1,0 +1,19 @@
+<bipros-modify-employee [inputToModify] = 'selectEmployee'
+(updatedEmployeeData)="updateEmployee($event)"
+
+></bipros-modify-employee>
+<h1 style="text-align: center;">Emplouesss</h1>
+<table style="width: 100%;text-align: center;">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let ce of employees">
+        <td>{{ce.name}}</td>
+        <td>{{ce.age}}</td>
+        <td>
+            <button (click)="selectData(ce)">Select</button>
+        </td>
+    </tr>
+</table>

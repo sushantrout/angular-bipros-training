@@ -1,0 +1,7 @@
+.galery-img {
+    cursor: pointer;
+}
+
+.galery-img:hover{
+    border: 2px solid green;
+}

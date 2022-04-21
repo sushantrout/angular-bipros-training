@@ -1,0 +1,4 @@
+Name : <input type="text" [(ngModel)]="inputToModify.name">
+Age: <input type="text" [(ngModel)]="inputToModify.age">
+<button (click)="updateEmployee()" [disabled]="sendStatus()" *ngIf="inputToModify.id">Update</button>
+<button (click)="createEmployee()" [disabled]="sendStatus()" *ngIf="!inputToModify.id">Create</button>
