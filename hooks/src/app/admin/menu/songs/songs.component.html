@@ -1,14 +1,40 @@
-<p-table [value]="songs" [scrollable]="true" scrollHeight="400px">
-    <ng-template pTemplate="header">
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-3">SELECT SORT TYPE</div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <p-dropdown
+          [options]="sortOptions"
+          [(ngModel)]="selectedSortOptions"
+        ></p-dropdown>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <p-table
+      [value]="songs"
+      [scrollable]="true"
+      [sortMode]="selectedSortOptions"
+      scrollHeight="400px"
+    >
+      <ng-template pTemplate="header">
         <tr>
-            <th style="min-width:200px">Artist</th>
-            <th style="min-width:200px">Title</th>
+          <th style="min-width: 200px" pSortableColumn="artist">
+            Artist <p-sortIcon field="artist"></p-sortIcon>
+          </th>
+          <th style="min-width: 200px" pSortableColumn="title">
+            Title <p-sortIcon field="title"></p-sortIcon>
+          </th>
         </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-song>
+      </ng-template>
+      <ng-template pTemplate="body" let-song>
         <tr>
-            <td style="min-width:200px">{{song.artist}}</td>
-            <td style="min-width:200px">{{song.title}}</td>
+          <td style="min-width: 200px">{{ song.artist }}</td>
+          <td style="min-width: 200px">{{ song.title }}</td>
         </tr>
-    </ng-template>
-</p-table>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

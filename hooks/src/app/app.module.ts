@@ -13,6 +13,8 @@ import { MenuComponent } from './admin/menu/menu.component';
 import {MenubarModule} from 'primeng/menubar';
 import { AdminComponent } from './admin/admin.component';
 import {TableModule} from 'primeng/table';
+import {DropdownModule} from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import {TableModule} from 'primeng/table';
     DragDropModule,
     HttpClientModule,
     MenubarModule,
-    TableModule
+    TableModule,
+    DropdownModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
