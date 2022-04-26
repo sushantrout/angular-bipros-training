@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {CalendarModule} from 'primeng/calendar';
 import {MultiSelectModule} from 'primeng/multiselect';
+import {PasswordModule} from 'primeng/password';
+import {CardModule} from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {MultiSelectModule} from 'primeng/multiselect';
     FormsModule,
     ProgressBarModule,
     CalendarModule,
-    MultiSelectModule
+    MultiSelectModule,
+    PasswordModule,
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
