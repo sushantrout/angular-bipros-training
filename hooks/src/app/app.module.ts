@@ -15,6 +15,9 @@ import { AdminComponent } from './admin/admin.component';
 import {TableModule} from 'primeng/table';
 import {DropdownModule} from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {CalendarModule} from 'primeng/calendar';
+import {MultiSelectModule} from 'primeng/multiselect';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { FormsModule } from '@angular/forms';
     MenubarModule,
     TableModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    ProgressBarModule,
+    CalendarModule,
+    MultiSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
