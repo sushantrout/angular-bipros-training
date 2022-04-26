@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   }
   submit(){
     this.userService.user = this.user;
+    this.userService.sendRequest(this.user);
     this.router.navigate(['/user-info']);
     console.log(this.user);
 

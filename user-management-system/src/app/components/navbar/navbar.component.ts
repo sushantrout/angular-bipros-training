@@ -13,10 +13,9 @@ export class NavbarComponent implements OnInit {
 
   user ?: UserModel = new UserModel();
   ngOnInit(): void {
-    let curr = this;
-    setInterval(() => {
-      curr.user = curr.userService.user;
-    }, 10);
+    this.userService.subject$.subscribe(res => {
+      this.user = res;
+    });
   }
 
 }
