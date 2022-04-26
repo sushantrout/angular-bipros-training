@@ -16,6 +16,9 @@
       [(ngModel)]="selectedPageoptions"
     ></p-dropdown>
   </div>
+  <div class="col-md-2">
+    <button (click)="clearSorting()" class="btn btn-primary">Clear Sorting</button>
+  </div>
 </div>
 <div class="row">
   <div class="col-md-12">
@@ -46,6 +49,7 @@
             <input
               pInputText
               type="text"
+              class="form-control"
               (input)="dt.filterGlobal($any($event.target).value, 'contains')"
               placeholder="Global Search"
             />
@@ -87,7 +91,8 @@
                 dt.filter($any($event.target).value, 'name', 'startsWith')
               "
               placeholder="Search by Name"
-              class="p-column-filter"
+              class="p-column-filter form-control"
+              
             />
           </th>
           <th>
@@ -98,7 +103,7 @@
                 dt.filter($any($event.target).value, 'country.name', 'contains')
               "
               placeholder="Search by Country"
-              class="p-column-filter"
+              class="p-column-filter form-control"
             />
           </th>
           <!-- <th>
@@ -176,7 +181,7 @@
             {{ customer.date }}
           </td> -->
           <td>
-            <span class="p-column-title">Status</span>
+            <span class="p-column-title form-control">Status</span>
             <span [class]="'customer-badge status-' + customer.status">{{
               customer.status
             }}</span>

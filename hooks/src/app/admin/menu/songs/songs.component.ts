@@ -11,6 +11,7 @@ import { SongsService } from 'src/app/services/songs.service';
   styleUrls: ['./songs.component.scss'],
 })
 export class SongsComponent implements OnInit {
+  
   selectedPageoptions: boolean = false;
   pageOptions: SelectItem[] = [
     {
@@ -114,5 +115,9 @@ export class SongsComponent implements OnInit {
 
   onRepresentativeChange(event: any) {
     this.table.filter(event.value, 'representative', 'in');
+  }
+
+  clearSorting() {
+    this.table.clear();
   }
 }
