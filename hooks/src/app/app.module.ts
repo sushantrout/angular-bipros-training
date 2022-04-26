@@ -8,21 +8,29 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { SongsComponent } from './songs/songs.component';
+import { SongsComponent } from './admin/menu/songs/songs.component';
+import { MenuComponent } from './admin/menu/menu.component';
+import {MenubarModule} from 'primeng/menubar';
+import { AdminComponent } from './admin/admin.component';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    SongsComponent
+    SongsComponent,
+    MenuComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     DragDropModule,
-    HttpClientModule
+    HttpClientModule,
+    MenubarModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

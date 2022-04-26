@@ -1,0 +1,14 @@
+<p-table [value]="songs" [scrollable]="true" scrollHeight="400px">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="min-width:200px">Artist</th>
+            <th style="min-width:200px">Title</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-song>
+        <tr>
+            <td style="min-width:200px">{{song.artist}}</td>
+            <td style="min-width:200px">{{song.title}}</td>
+        </tr>
+    </ng-template>
+</p-table>
