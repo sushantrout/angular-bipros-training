@@ -1,5 +1,7 @@
 package com.hooks.service;
 
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,8 @@ public class SongsService {
 	private SongRepo songRepo;
 	
 	public Iterable<Song> findAll() {
-		PageRequest of = PageRequest.of(0, 3000);
-		return songRepo.findAll(of);
+		PageRequest of = PageRequest.of(0, 5000);
+		return songRepo.findAll(of).stream().filter(s -> s.getLrec() != null).collect(Collectors.toList());
 	}
 
 }

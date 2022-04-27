@@ -96,3 +96,21 @@
     }
 
 }
+
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0rem;
+}
+
+.layout-news-active :host ::ng-deep .p-datatable tr > th {
+    top: 7rem;
+}
+
+.play-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+.play-icon:hover{
+    color: #0069d9;
+}

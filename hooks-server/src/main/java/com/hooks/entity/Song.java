@@ -33,4 +33,7 @@ public class Song {
 	@ManyToOne
 	@JoinColumn(name = "titlecode")
 	private Title title;
+	
+	@Column(name = "lrec")
+	private Long lrec;
 }

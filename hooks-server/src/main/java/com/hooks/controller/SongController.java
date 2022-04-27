@@ -34,6 +34,7 @@ public class SongController {
 				dto.setTitle(title.getName());
 			}
 			dto.setCode(a.getCode());
+			dto.setLrec(a.getLrec());
 			songs.add(dto);
 		});
 		return songs;

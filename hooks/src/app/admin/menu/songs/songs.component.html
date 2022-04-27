@@ -64,6 +64,11 @@
           <th style="width: 3rem">
             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
           </th>
+          <th style="width: 3rem">
+            <div class="flex justify-content-center align-items-center">
+              Play
+            </div>
+          </th>
           <th pSortableColumn="artist">
             <div class="flex justify-content-center align-items-center">
               Artist
@@ -92,6 +97,9 @@
         <tr>
           <td>
             <p-tableCheckbox [value]="song"></p-tableCheckbox>
+          </td>
+          <td>
+            <i class="pi pi-play play-icon" (click)="play(song)"></i>
           </td>
           <td>
             {{ song.artist }}
