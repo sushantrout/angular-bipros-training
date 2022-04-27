@@ -14,9 +14,6 @@ export class AppComponent implements OnInit {
   }
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
   ngOnInit(): void {
-    this.api.getPlaceHolder().subscribe((res : any) => {
-      this.todo = res.map((r : any) => r.title)
-    });
   }
   
   title = 'hooks';

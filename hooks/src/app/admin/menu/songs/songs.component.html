@@ -17,195 +17,94 @@
     ></p-dropdown>
   </div>
   <div class="col-md-2">
-    <button (click)="clearSorting()" class="btn btn-primary">Clear Sorting</button>
+    <button (click)="clear(dt)" class="btn btn-primary">Clear Sorting</button>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
     <p-table
       #dt
-      [value]="customers"
-      [(selection)]="selectedCustomers"
+      [value]="songs"
       dataKey="id"
-      styleClass="p-datatable-customers"
-      [rowHover]="true"
       [rows]="10"
       [showCurrentPageReport]="true"
+      responsiveLayout="scroll"
       [rowsPerPageOptions]="[10, 25, 50]"
       [loading]="loading"
+      styleClass="p-datatable-gridlines"
       [paginator]="selectedPageoptions"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [filterDelay]="0"
-      scrollHeight="500px"
-      [scrollable]="true"
-      [globalFilterFields]="['name', 'country.name', 'status']"
       [sortMode]="selectedSortOptions"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      scrollHeight="450px"
+      [globalFilterFields]="['artist', 'title']"
     >
       <ng-template pTemplate="caption">
-        <div class="table-header">
-          List of Customers
-          <span class="p-input-icon-right">
+        <div class="flex">
+          <button
+            pButton
+            label="Clear"
+            class="p-button-outlined"
+            icon="pi pi-filter-slash"
+            (click)="clear(dt)"
+          ></button>
+          <span class="p-input-icon-right ml-auto" style="float: right">
             <i class="pi pi-search"></i>
             <input
               pInputText
               type="text"
               class="form-control"
               (input)="dt.filterGlobal($any($event.target).value, 'contains')"
-              placeholder="Global Search"
+              placeholder="Search keyword"
             />
           </span>
         </div>
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th style="width: 3rem"></th>
-          <th pSortableColumn="name">
-            Name <p-sortIcon field="name"></p-sortIcon>
-          </th>
-          <th pSortableColumn="country.name">
-            Country <p-sortIcon field="country.name"></p-sortIcon>
-          </th>
-          <!--  <th pSortableColumn="representative.name">
-            Representative <p-sortIcon field="representative.name"></p-sortIcon>
-          </th> -->
-          <!-- <th pSortableColumn="date">
-            Date <p-sortIcon field="date"></p-sortIcon>
-          </th> -->
-          <th pSortableColumn="status">
-            Status <p-sortIcon field="status"></p-sortIcon>
-          </th>
-          <!-- <th pSortableColumn="activity">
-            Activity <p-sortIcon field="activity"></p-sortIcon>
-          </th> -->
-          <!-- <th style="width: 8rem"></th> -->
-        </tr>
-        <tr>
-          <th>
+          <th style="width: 3rem">
             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
           </th>
-          <th>
-            <input
-              pInputText
-              type="text"
-              (input)="
-                dt.filter($any($event.target).value, 'name', 'startsWith')
-              "
-              placeholder="Search by Name"
-              class="p-column-filter form-control"
-              
-            />
+          <th pSortableColumn="artist">
+            <div class="flex justify-content-center align-items-center">
+              Artist
+              <p-columnFilter
+                type="text"
+                field="artist"
+                display="menu"
+              ></p-columnFilter>
+              <p-sortIcon field="artist"></p-sortIcon>
+            </div>
           </th>
-          <th>
-            <input
-              pInputText
-              type="text"
-              (input)="
-                dt.filter($any($event.target).value, 'country.name', 'contains')
-              "
-              placeholder="Search by Country"
-              class="p-column-filter form-control"
-            />
+          <th pSortableColumn="title">
+            <div class="flex justify-content-center align-items-center">
+              Title
+              <p-columnFilter
+                type="text"
+                field="title"
+                display="menu"
+              ></p-columnFilter>
+              <p-sortIcon field="title"></p-sortIcon>
+            </div>
           </th>
-          <!-- <th>
-            <p-multiSelect
-              [options]="representatives"
-              placeholder="All"
-              (onChange)="onRepresentativeChange($event)"
-              styleClass="p-column-filter"
-              optionLabel="name"
-            >
-              <ng-template let-option pTemplate="item">
-                <div class="p-multiselect-representative-option">
-                  <span class="p-ml-1">{{ option.label }}</span>
-                </div>
-              </ng-template>
-            </p-multiSelect>
-          </th> -->
-          <!-- <th>
-            <p-calendar
-              (onSelect)="onDateSelect($event)"
-              (onClearClick)="dt.filter('', 'date', 'equals')"
-              [showButtonBar]="true"
-              styleClass="p-column-filter"
-              placeholder="Registration Date"
-              [readonlyInput]="true"
-              dateFormat="yy-mm-dd"
-            ></p-calendar>
-          </th> -->
-          <th>
-            <p-dropdown
-              [options]="statuses"
-              (onChange)="dt.filter($event.value, 'status', 'equals')"
-              styleClass="p-column-filter"
-              placeholder="Select a Status"
-              [showClear]="true"
-            >
-              <ng-template let-option pTemplate="item">
-                <span [class]="'customer-badge status-' + option.value"
-                  >&#123;&#123;option.label&#125;&#125;</span
-                >
-              </ng-template>
-            </p-dropdown>
-          </th>
-          <!-- <th>
-            <input
-              pInputText
-              type="text"
-              (input)="onActivityChange($event)"
-              placeholder="Minimum"
-              class="p-column-filter"
-            />
-          </th> -->
-          <!-- <th></th> -->
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-customer>
-        <tr class="p-selectable-row">
+      <ng-template pTemplate="body" let-song>
+        <tr>
           <td>
-            <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+            <p-tableCheckbox [value]="song"></p-tableCheckbox>
           </td>
           <td>
-            <span class="p-column-title">Name</span>
-            {{ customer.name }}
+            {{ song.artist }}
           </td>
+
           <td>
-            <span class="p-column-title">Country</span>
-            <span class="image-text">{{ customer.country.name }}</span>
+            {{ song.title }}
           </td>
-          <!--  <td>
-            <span class="p-column-title">Representative</span>
-            <span class="image-text">{{ customer.representative.name }}</span>
-          </td> -->
-          <!-- <td>
-            <span class="p-column-title">Date</span>
-            {{ customer.date }}
-          </td> -->
-          <td>
-            <span class="p-column-title form-control">Status</span>
-            <span [class]="'customer-badge status-' + customer.status">{{
-              customer.status
-            }}</span>
-          </td>
-          <!-- <td>
-            <span class="p-column-title">Activity</span>
-            <p-progressBar
-              [value]="customer.activity"
-              [showValue]="false"
-            ></p-progressBar>
-          </td> -->
-          <!-- <td style="text-align: center">
-            <button
-              pButton
-              type="button"
-              class="p-button-secondary"
-              icon="pi pi-cog"
-            ></button>
-          </td> -->
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="8">No customers found.</td>
+          <td colspan="7">No songs found.</td>
         </tr>
       </ng-template>
     </p-table>
