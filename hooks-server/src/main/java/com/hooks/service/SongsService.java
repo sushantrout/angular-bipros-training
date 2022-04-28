@@ -16,7 +16,7 @@ public class SongsService {
 	private SongRepo songRepo;
 	
 	public Iterable<Song> findAll() {
-		PageRequest of = PageRequest.of(0, 5000);
+		PageRequest of = PageRequest.of(0, 3000);
 		return songRepo.findAll(of).stream().filter(s -> s.getLrec() != null).collect(Collectors.toList());
 	}
 

@@ -61,15 +61,15 @@
       </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th style="width: 3rem">
+          <th style="width: 5%">
             <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
           </th>
-          <th style="width: 3rem">
+          <th style="width: 5%">
             <div class="flex justify-content-center align-items-center">
               Play
             </div>
           </th>
-          <th pSortableColumn="artist">
+          <th pSortableColumn="artist" style="width: 40%">
             <div class="flex justify-content-center align-items-center">
               Artist
               <p-columnFilter
@@ -80,7 +80,7 @@
               <p-sortIcon field="artist"></p-sortIcon>
             </div>
           </th>
-          <th pSortableColumn="title">
+          <th pSortableColumn="title" style="width: 40%">
             <div class="flex justify-content-center align-items-center">
               Title
               <p-columnFilter
